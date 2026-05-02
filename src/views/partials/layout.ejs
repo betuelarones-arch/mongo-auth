@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= typeof title !== 'undefined' ? title + ' - Express Auth' : 'Express Auth' %></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="blue darken-3">
+        <div class="nav-wrapper container">
+            <a href="/" class="brand-logo">ExpressAuth</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down" id="nav-desktop">
+                <li id="nav-signin"><a href="/signIn">Iniciar Sesión</a></li>
+                <li id="nav-signup"><a href="/signUp">Registrarse</a></li>
+                <li id="nav-dashboard" style="display:none"><a href="/dashboard">Dashboard</a></li>
+                <li id="nav-admin" style="display:none"><a href="/admin">Admin</a></li>
+                <li id="nav-profile" style="display:none"><a href="/profile">Mi Cuenta</a></li>
+                <li id="nav-logout" style="display:none"><a href="#" onclick="logout()">Cerrar Sesión</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li id="nav-signin-mobile"><a href="/signIn">Iniciar Sesión</a></li>
+        <li id="nav-signup-mobile"><a href="/signUp">Registrarse</a></li>
+        <li id="nav-dashboard-mobile" style="display:none"><a href="/dashboard">Dashboard</a></li>
+        <li id="nav-admin-mobile" style="display:none"><a href="/admin">Admin</a></li>
+        <li id="nav-profile-mobile" style="display:none"><a href="/profile">Mi Cuenta</a></li>
+        <li id="nav-logout-mobile" style="display:none"><a href="#" onclick="logout()">Cerrar Sesión</a></li>
+    </ul>
+
+    <main class="container" style="margin-top: 30px;">
+        <% if (typeof error !== 'undefined' && error) { %>
+            <div class="card red lighten-4">
+                <div class="card-content red-text text-darken-4">
+                    <p><i class="material-icons left">error</i><%= error %></p>
+                </div>
+            </div>
+        <% } %>
+        <% if (typeof success !== 'undefined' && success) { %>
+            <div class="card green lighten-4">
+                <div class="card-content green-text text-darken-4">
+                    <p><i class="material-icons left">check_circle</i><%= success %></p>
+                </div>
+            </div>
+        <% } %>
+        <%- body %>
+    </main>
+
+    <footer class="page-footer blue darken-3" style="margin-top: 50px;">
+        <div class="footer-copyright">
+            <div class="container">
+                © 2026 Express Mongo Auth
+                <a class="grey-text text-lighten-4 right" href="#!">Sistema de Autenticación</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            M.Sidenav.init(elems);
+            updateNav();
+        });
+    </script>
+</body>
+</html>

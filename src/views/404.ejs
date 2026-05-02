@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página no encontrada - Express Auth</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .error-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Shapes -->
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="spinner"></div>
+    </div>
+    
+    <!-- Back to Top -->
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <i class="material-icons">arrow_upward</i>
+    </div>
+    
+    <nav>
+        <div class="nav-wrapper container">
+            <a href="/" class="brand-logo">🚀 ExpressAuth</a>
+        </div>
+    </nav>
+
+    <main class="container" style="margin-top: 100px;">
+        <div class="row">
+            <div class="col s12 m8 offset-m2 center-align">
+                <div class="card" style="border-radius: 16px; padding: 40px 30px;">
+                    <div class="error-icon" style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); margin: 0 auto 30px; display: flex; align-items: center; justify-content: center;">
+                        <i class="material-icons" style="font-size: 4rem; color: white;">search_off</i>
+                    </div>
+                    <h4 style="color: #4facfe; font-weight: 700; font-size: 2.5rem;">404</h4>
+                    <h5 style="color: #333; font-weight: 600; margin: 20px 0;">Página no encontrada</h5>
+                    <p style="color: #666; font-size: 1.1rem; margin-bottom: 30px;">La página que buscas no existe.<br>Verifica la URL o navega a una página existente.</p>
+                    <div style="margin-top: 30px;">
+                        <a href="/" class="btn waves-effect waves-light" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; margin: 5px; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);">
+                            <i class="material-icons left">home</i>Ir al Inicio
+                        </a>
+                        <a href="/dashboard" class="btn-flat waves-effect" style="color: #667eea; font-weight: 500; margin: 5px;">
+                            <i class="material-icons left">dashboard</i>Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="page-footer" style="margin-top: 100px;">
+        <div class="footer-copyright">
+            <div class="container">© 2026 Express Mongo Auth</div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>l', function() {
+            const btn = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

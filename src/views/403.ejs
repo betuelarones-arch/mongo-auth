@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Denegado - Express Auth</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .error-icon {
+            animation: pulse 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper container">
+            <a href="/" class="brand-logo">🚀 ExpressAuth</a>
+        </div>
+    </nav>
+
+    <main class="container" style="margin-top: 100px;">
+        <div class="row">
+            <div class="col s12 m8 offset-m2 center-align">
+                <div class="card" style="border-radius: 16px; padding: 40px 30px;">
+                    <div class="error-icon" style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); margin: 0 auto 30px; display: flex; align-items: center; justify-content: center;">
+                        <i class="material-icons" style="font-size: 4rem; color: white;">block</i>
+                    </div>
+                    <h4 style="color: #f5576c; font-weight: 700; font-size: 2.5rem;">403</h4>
+                    <h5 style="color: #333; font-weight: 600; margin: 20px 0;">Acceso Denegado</h5>
+                    <p style="color: #666; font-size: 1.1rem; margin-bottom: 30px;">No tienes permisos para acceder a esta página.<br>Solo los usuarios con el rol adecuado pueden ver este contenido.</p>
+                    <div style="margin-top: 30px;">
+                        <a href="/dashboard" class="btn waves-effect waves-light" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; margin: 5px; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);">
+                            <i class="material-icons left">dashboard</i>Volver al Dashboard
+                        </a>
+                        <a href="/signIn" onclick="logout(); return false;" class="btn-flat waves-effect" style="color: #f5576c; font-weight: 500; margin: 5px;">
+                            <i class="material-icons left">exit_to_app</i>Cerrar Sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="page-footer" style="margin-top: 100px;">
+        <div class="footer-copyright">
+            <div class="container">© 2026 Express Mongo Auth</div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('fade-out');
+                setTimeout(() => {
+                    document.getElementById('preloader').style.display = 'none';
+                }, 500);
+            }, 800);
+        });
+        
+        // Back to Top
+        window.addEventListener('scroll', function() {
+            const btn = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Express Auth</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        main {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .brand-logo {
+            text-align: center;
+            display: block;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: white !important;
+        }
+        .page-title {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+        .card-content {
+            padding: 50px 45px !important;
+        }
+        .input-field {
+            margin-top: 35px !important;
+        }
+        .input-field input {
+            font-size: 1.2rem !important;
+            padding-left: 4rem !important;
+        }
+        .input-field label {
+            font-size: 1.1rem !important;
+            padding-left: 4rem !important;
+        }
+        .input-field .prefix {
+            font-size: 2rem !important;
+        }
+        .btn-large {
+            height: 60px !important;
+            line-height: 60px !important;
+            font-size: 1.3rem !important;
+            margin-top: 20px;
+        }
+        .card-action {
+            padding: 25px 45px !important;
+        }
+        .card-action p {
+            font-size: 1.1rem;
+        }
+        .error-card, .success-card {
+            margin-bottom: 25px;
+        }
+        .error-card .card-content, .success-card .card-content {
+            padding: 20px 25px !important;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="row" style="margin-bottom: 0;">
+            <div class="col s12">
+                <a href="/" class="brand-logo">🚀 ExpressAuth</a>
+            </div>
+        </div>
+        
+        <div class="row" style="margin-bottom: 0;">
+            <div class="col s12">
+                <h4 class="page-title">Bienvenido de vuelta</h4>
+                <p class="subtitle">Inicia sesión en tu cuenta</p>
+            </div>
+        </div>
+
+        <% if (typeof error !== 'undefined' && error) { %>
+            <div class="row error-card" style="margin-bottom: 0;">
+                <div class="col s12">
+                    <div class="card red lighten-4" style="margin-bottom: 0; border-radius: 16px;">
+                        <div class="card-content red-text text-darken-4" style="padding: 20px 25px;">
+                            <p style="margin: 0;"><i class="material-icons left" style="font-size: 1.3rem;">error</i><%= error %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+        
+        <% if (typeof success !== 'undefined' && success) { %>
+            <div class="row success-card" style="margin-bottom: 0;">
+                <div class="col s12">
+                    <div class="card green lighten-4" style="margin-bottom: 0; border-radius: 16px;">
+                        <div class="card-content green-text text-darken-4" style="padding: 20px 25px;">
+                            <p style="margin: 0;"><i class="material-icons left" style="font-size: 1.3rem;">check_circle</i>Registro exitoso. Por favor inicia sesión.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+
+        <div class="row" style="margin-bottom: 0;">
+            <div class="col s12">
+                <div class="card" style="border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); margin: 0;">
+                    <div class="card-content">
+                        <form method="POST" action="/signIn">
+                            <div class="input-field" style="margin-top: 0;">
+                                <i class="material-icons prefix" style="color: #60a5fa; font-size: 2rem;">email</i>
+                                <input id="email" name="email" type="email" class="validate" required style="border-bottom: 2px solid #475569; font-size: 1.2rem; padding-left: 4rem !important; color: #f1f5f9;">
+                                <label for="email" style="font-size: 1.1rem; padding-left: 4rem !important;">Email</label>
+                            </div>
+                            
+                            <div class="input-field" style="margin-top: 40px;">
+                                <i class="material-icons prefix" style="color: #60a5fa; font-size: 2rem;">lock</i>
+                                <input id="password" name="password" type="password" class="validate" required style="border-bottom: 2px solid #475569; font-size: 1.2rem; padding-left: 4rem !important; color: #f1f5f9;">
+                                <label for="password" style="font-size: 1.1rem; padding-left: 4rem !important;">Contraseña</label>
+                            </div>
+                            
+                            <div class="center-align" style="margin-top: 50px;">
+                                <button class="btn-large waves-effect waves-light" type="submit" style="width: 100%; height: 60px; font-size: 1.3rem; border-radius: 14px;">
+                                    Ingresar
+                                    <i class="material-icons right">login</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-action" style="text-align: center; padding: 25px 45px; background: rgba(15, 23, 42, 0.5);">
+                        <p style="margin: 0; color: #94a3b8; font-size: 1.1rem;">¿No tienes cuenta? <a href="/signUp" style="color: #60a5fa; font-weight: 700; font-size: 1.15rem;">Regístrate aquí</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
