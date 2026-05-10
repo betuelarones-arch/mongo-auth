@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import app from './app.js';
+import seedRoles from './utils/seedRoles.js';
+import seedUsers from './utils/seedUsers.js';
 
 dotenv.config();
 
@@ -11,6 +13,9 @@ const connectDB = async () => {
     try {
         await mongoose.connect(MONGO_URI);
         console.log('Connected to MongoDB Atlas');
+
+        await seedRoles();
+        await seedUsers();
     } catch (err) {
         console.error('MongoDB connection error:', err.message);
         process.exit(1);
